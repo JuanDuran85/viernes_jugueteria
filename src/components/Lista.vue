@@ -8,6 +8,8 @@
                 <th>Nombre</th>
                 <th>Stock</th>
                 <th>Precio</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
             </tr>
         </thead>
         <tbody>
@@ -16,6 +18,12 @@
                 <td>{{item.nombre}}</td>
                 <td>{{item.stock}}</td>
                 <td>{{item.precio}}</td>
+                <td><button @click="editarProducto(item.idDoc)" class="btn btn-info">
+                        Editar
+                </button></td>
+                <td><button class="btn btn-danger">
+                        Eliminar
+                </button></td>
             </tr>
         </tbody>
     </table>
@@ -28,6 +36,13 @@ export default {
     computed: {
         producJuguete(){
            return this.$store.getters.mostrandoJuguetes; 
+        }
+    },
+    methods: {
+        editarProducto(id){
+            console.log(id);
+            this.$store.dispatch('pasandoIdProduc',id);
+            this.$router.push('/edicion');
         }
     },
 }

@@ -8,10 +8,14 @@ export default new Vuex.Store({
   state: {
     uidUser: '',
     juguetes: [], // se carga con los valores de la base de datos
+    idProducto: '',
   },
   getters: {
     mostrandoJuguetes(state){
       return state.juguetes;
+    },
+    envioIdProducto(state){
+      return state.idProducto;
     }
   },
   mutations: {
@@ -21,6 +25,7 @@ export default new Vuex.Store({
     traerBD(state){
       db.collection("productos").onSnapshot(info=>{
         let aux = [];
+        console.log(info);
         info.forEach((element)=>{
           aux.push({
             codigo: element.data().codigo,
@@ -32,6 +37,9 @@ export default new Vuex.Store({
         });
         state.juguetes = aux;
       })
+    },
+    guardandoIdProducto(state,id){
+      state.idProducto = id;
     }
   },
   actions: {
@@ -40,6 +48,9 @@ export default new Vuex.Store({
     },
     activandoMutacionDB(context){
       context.commit('traerBD');
+    },
+    pasandoIdProduc(context,id){
+      context.commit('guardandoIdProducto',id);
     }
   },
 })

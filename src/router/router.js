@@ -20,6 +20,11 @@ Vue.use(VueRouter)
     name: 'Administracion',
     component: () => import('../views/Administracion.vue')
   },
+  {
+    path: '/edicion',
+    name: 'Edicion',
+    component: () => import('../views/Edicion.vue')
+  },
 
 ]
 
