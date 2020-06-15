@@ -14,7 +14,13 @@ Vue.use(VueRouter)
     path: '/login',
     name: 'Login',
     component: () => import('../views/Login.vue')
-  }
+  },
+  {
+    path: '/administracion',
+    name: 'Administracion',
+    component: () => import('../views/Administracion.vue')
+  },
+
 ]
 
 const router = new VueRouter({
