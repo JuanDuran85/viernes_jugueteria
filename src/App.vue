@@ -22,7 +22,8 @@ export default {
         console.log("Salida de Usuario")
         this.$store.dispatch('idUserLog','');
       }
-    })
+    });
+    this.$store.dispatch('activandoMutacionDB');
   },
 }
 </script>

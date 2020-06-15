@@ -20,13 +20,26 @@ export default new Vuex.Store({
     },
     traerBD(state){
       db.collection("productos").onSnapshot(info=>{
-        
+        let aux = [];
+        info.forEach((element)=>{
+          aux.push({
+            codigo: element.data().codigo,
+            nombre: element.data().nombre,
+            stock: element.data().stock,
+            precio: element.data().precio,
+            idDoc: element.id
+          })
+        });
+        state.juguetes = aux;
       })
     }
   },
   actions: {
     idUserLog(context,idUsuarioRecibido){
       context.commit('agregandoId',idUsuarioRecibido);
+    },
+    activandoMutacionDB(context){
+      context.commit('traerBD');
     }
   },
 })
