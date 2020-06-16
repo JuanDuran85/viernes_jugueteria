@@ -25,6 +25,11 @@ Vue.use(VueRouter)
     name: 'Edicion',
     component: () => import('../views/Edicion.vue')
   },
+  {
+    path: '/eliminar/:id',
+    name: 'Eliminar',
+    component: () => import('../views/Eliminar.vue')
+  },
 
 ]
 

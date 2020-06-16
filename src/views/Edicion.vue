@@ -59,6 +59,9 @@ export default {
                     precio: this.jugueteIdEditar.precio
                 }).then(()=>{
                     console.log("actualizo")
+                    setTimeout(()=>{
+                        this.$router.push('/administracion');
+                    },1000)
                 })
             })
 
@@ -69,7 +72,6 @@ export default {
     },
     created() {
         db.collection("productos").doc(this.$store.getters.envioIdProducto).get().then(response =>{
-            console.log(response.data());
             this.jugueteIdEditar = response.data();
         })
     },
