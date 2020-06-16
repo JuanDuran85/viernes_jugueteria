@@ -52,8 +52,8 @@ export default {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'El producto no existe',
-                    footer: 'Juguetes Otto Kraus'
+                    text: 'El producto no existe, no siga intentado',
+                    footer: 'Juguetes Otto Kraus - '
                 }).then(()=>{
                     this.$router.push('/administracion');
                 })
