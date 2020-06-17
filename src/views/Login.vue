@@ -45,7 +45,7 @@ export default {
           this.userOk = 'Usuario correcto';
           setTimeout(()=>{
             this.userOk = '';
-            this.$router.push('/');
+            this.$router.replace('/administracion');
           },3000);
           this.password = '';
           this.email = '';

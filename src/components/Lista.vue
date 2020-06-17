@@ -6,7 +6,7 @@
             Agregar
         </button>
       </div>
-      <table class="table table-hover">
+      <table class="table table-hover" v-if="$store.state.uidUser">
         <thead>
             <tr>
                 <th>Código</th>

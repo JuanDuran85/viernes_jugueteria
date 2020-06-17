@@ -1,18 +1,21 @@
 <template>
   <div>
-    <navegacion></navegacion>
+    <navegacion v-if="!$store.state.uidUser"></navegacion>
+    <navegacion2 v-else></navegacion2>
     <router-view/>
   </div>
 </template>
 
 <script>
 import Navegacion from './components/Navegacion.vue';
+import Navegacion2 from './components/Navegacion2.vue';
 import firebase from 'firebase';
 
 export default {
   name: 'App',
   components: {
-    Navegacion
+    Navegacion,
+    Navegacion2
   },
   mounted() {
     firebase.auth().onAuthStateChanged(user=>{

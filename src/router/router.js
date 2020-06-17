@@ -1,6 +1,7 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '../views/Home.vue';
+import store from '../store/store';
 
 Vue.use(VueRouter)
 
@@ -18,7 +19,8 @@ Vue.use(VueRouter)
   {
     path: '/administracion',
     name: 'Administracion',
-    component: () => import('../views/Administracion.vue')
+    component: () => import('../views/Administracion.vue'),
+    meta: {requireAuth: true}
   },
   {
     path: '/edicion',
@@ -37,6 +39,16 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to,from,next)=>{
+  let loginRequerido = to.matched.some(ruta => ruta.meta.requireAuth);
+
+  if(loginRequerido && !store.state.uidUser){
+    next('/login')
+  }else{
+    next()
+  }
 })
 
 export default router
